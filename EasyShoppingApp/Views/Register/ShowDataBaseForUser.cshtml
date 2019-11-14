@@ -1,0 +1,44 @@
+﻿@model List<EasyShoppingApp.Models.LoginPanel>
+
+<br />
+<br />
+
+
+    <div class="container">
+        <table class="table table-bordered">
+            <a href="@Url.Action("SetDataInDataBase", "Register")">Logout</a>
+            <thead>
+                <tr>
+                    <th>Username
+                    </th>
+                    <th>
+                        Password
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr style="background-color:beige">
+                        <td>@Model[i].Username</td>
+                        <td>@Model[i].Password</td>
+                        <td>
+                       
+                            <a href="@Url.Action("Delete",new { id = Model[i].ID })"><i class="glyphicon glyphicon-trash"></i> </a>
+                            <a href="@Url.Action("Edit",new { id = Model[i].ID })"><i class="glyphicon glyphicon-edit"></i> </a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        <!--Untuk download ke excel-->
+        <h4>
+            <a href="@Url.Action("ExportToExcel", "Register")"> Export Akun Ke Excel</a>
+        </h4>
+        <!--Akhir untuk excel-->
+
+    </div>
